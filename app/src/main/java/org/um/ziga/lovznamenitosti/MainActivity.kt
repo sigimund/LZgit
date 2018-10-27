@@ -1,5 +1,6 @@
 package org.um.ziga.lovznamenitosti
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,4 +21,12 @@ class MainActivity : AppCompatActivity() {
         upGeslo = (EditText)findViewById(R.id.upGeslo);
         gumb = (Button)findViewById(R.id.gumb);
     }
+
+    private void preveri(String upoIme, String upoGeslo){
+        if((upoIme == "Admin") && (upoGeslo == "asdf")){
+            Intent intent = new Intent(MainActivity.this, upoIgra.class);
+        }
+    }
+
+
 }
