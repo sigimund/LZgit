@@ -1,9 +1,4 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">LovZnamenitosti</string>
     <string name="Vpis">Vpiši se</string>
-=======
-    <string name="app_name">LZprojekt</string>
-    <string name="Vpis">Vpiši</string>
->>>>>>> Prva_Veja
 </resources>
