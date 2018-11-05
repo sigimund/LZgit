@@ -1,4 +1,4 @@
-package org.um.ziga.lovznamenitosti
+package org.um.ziga.lzprojekt
 
 import org.junit.Test
 
