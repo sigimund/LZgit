@@ -7,17 +7,19 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".MainActivity">
 
     <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/VpisiLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_width="match_parent">
 
         <TextView
                 android:id="@+id/Naslov"
@@ -27,7 +29,7 @@
                 android:layout_marginTop="35dp"
                 android:text="Lov na znamenitosti"
                 android:textAlignment="center"
-                android:textSize="30sp" />
+                android:textSize="30sp"/>
 
         <TextView
                 android:id="@+id/textView2"
@@ -35,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="Uporabniško ime"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="24sp"/>
 
         <EditText
                 android:id="@+id/UporabniskoIme"
@@ -46,7 +48,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:singleLine="false"
-                android:textAlignment="center" />
+                android:textAlignment="center"/>
 
         <TextView
                 android:id="@+id/textView3"
@@ -55,7 +57,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Geslo"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="24sp"/>
 
         <EditText
                 android:id="@+id/geslo"
@@ -66,7 +68,7 @@
                 android:layout_marginRight="80dp"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:textAlignment="center" />
+                android:textAlignment="center"/>
 
         <Button
                 android:id="@+id/GumbVpisi"

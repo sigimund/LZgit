@@ -12,7 +12,7 @@ class Uporabnik : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uporabnik)
 
-        val message = intent.getStringExtra(EXTRA_MESSAGE)
+        val message = "Dobrodošli nazaj " + intent.getStringExtra(EXTRA_MESSAGE)
         val context = applicationContext
         val duration = Toast.LENGTH_SHORT
 
