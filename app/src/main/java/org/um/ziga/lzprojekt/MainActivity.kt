@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, Uporabnik::class.java).apply {
                     putExtra(EXTRA_MESSAGE, message)
                 }
+                uIme.setText("")
+                uGeslo.setText("")
                 startActivity(intent)
             }
             else{

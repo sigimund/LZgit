@@ -38,7 +38,11 @@
                     android:layout_marginLeft="90dp"
                     android:layout_marginRight="90dp"
                     android:layout_marginTop="20dp"
-                    android:drawableLeft="@drawable/adventure_map"/>
+                    android:drawableLeft="@drawable/adventure_map"
+                    android:background="@drawable/gumbi"
+            >
+
+            </Button>
             <Button
                     android:text="Točke"
                     android:layout_width="match_parent"
@@ -47,6 +51,7 @@
                     android:layout_marginRight="90dp"
                     android:layout_marginTop="20dp"
                     android:drawableLeft="@drawable/dosezki"
+                    android:background="@drawable/gumbi"
             />
             <Button
                     android:text="Dosežki"
@@ -54,15 +59,18 @@
                     android:layout_height="wrap_content" android:id="@+id/button3"
                     android:layout_marginLeft="90dp"
                     android:layout_marginRight="90dp"
-                    android:layout_marginTop="20dp"/>
-
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/gumbi"
+            />
             <Button
                     android:text="Izhod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/button4"
                     android:layout_marginLeft="90dp"
                     android:layout_marginRight="90dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/gumbi"
+            />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
