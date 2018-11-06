@@ -32,7 +32,10 @@ class Uporabnik : AppCompatActivity() {
         val gumbIzhod = findViewById<Button>(R.id.izhod)
 
         gumbStart.setOnClickListener(){
-
+            val intent = Intent(this, IgraZemljevid::class.java).apply {
+                putExtra(EXTRA_MESSAGE, message)
+            }
+            startActivity(intent)
         }
 
         gumbTocke.setOnClickListener(){
