@@ -3,9 +3,10 @@ package org.um.ziga.lzprojekt
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-
+import kotlin.system.exitProcess
 
 class Uporabnik : AppCompatActivity() {
 
@@ -23,5 +24,30 @@ class Uporabnik : AppCompatActivity() {
 
         val toast = Toast.makeText(context, message, duration)
         toast.show()
+
+
+        val gumbStart = findViewById<Button>(R.id.novLov)
+        val gumbTocke = findViewById<Button>(R.id.tocke)
+        val gumbDosezki = findViewById<Button>(R.id.dosezki)
+        val gumbIzhod = findViewById<Button>(R.id.izhod)
+
+        gumbStart.setOnClickListener(){
+
+        }
+
+        gumbTocke.setOnClickListener(){
+
+        }
+
+        gumbDosezki.setOnClickListener(){
+
+        }
+
+        gumbIzhod.setOnClickListener(){// izhod
+            moveTaskToBack(true);
+            exitProcess(-1)
+            //finishAffinity() // potrebuje minimalni API level 16
+        }
+
     }
 }

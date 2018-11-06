@@ -77,7 +77,8 @@
                 android:layout_marginLeft="140dp"
                 android:layout_marginRight="140dp"
                 android:text="@string/Vpis"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:background="@drawable/gumbi"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
