@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 val text = layout.findViewById<TextView>(R.id.text)
                 text.text = "Napačno uporabniško ime ali geslo"
                 with (Toast(applicationContext)) {
-                    setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+                    setGravity(Gravity.BOTTOM, 0, 0)
                     duration = Toast.LENGTH_LONG
                     view = layout
                     show()
