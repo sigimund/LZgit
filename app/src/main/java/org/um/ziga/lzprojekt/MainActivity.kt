@@ -9,6 +9,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import org.w3c.dom.Text
 
 
 const val EXTRA_MESSAGE = "org.um.ziga.lzprojekt.MESSAGE"
@@ -39,10 +40,10 @@ class MainActivity : AppCompatActivity() {
             else{
                 // custom View toast
                 val inflater = layoutInflater
-                val container: ViewGroup = findViewById(R.id.custom_toast_container)
-                val layout: ViewGroup = inflater.inflate(R.layout.custom_toast, container) as ViewGroup
-                val text: TextView = layout.findViewById(R.id.text)
-                text.text = "This is a custom toast"
+                val container = findViewById<ViewGroup>(R.id.custom_toast_container)
+                val layout = inflater.inflate(R.layout.custom_toast, container) as ViewGroup
+                val text = layout.findViewById<TextView>(R.id.text)
+                text.text = "Napačno uporabniško ime ali geslo"
                 with (Toast(applicationContext)) {
                     setGravity(Gravity.CENTER_VERTICAL, 0, 0)
                     duration = Toast.LENGTH_LONG
