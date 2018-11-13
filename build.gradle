@@ -21,9 +21,9 @@ allprojects {
         jcenter()
 
         // Add the Esri public Bintray Maven repository
-        maven {
+        /*maven {
             url 'https://esri.bintray.com/arcgis'
-        }
+        }*/
     }
 }
 
