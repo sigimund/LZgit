@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         gumb.setOnClickListener(){
 
-            if( (uIme.text.toString() == "Žiga") && (uGeslo.text.toString() == "123") ){
+            if( (uIme.text.toString() == "ziga") && (uGeslo.text.toString() == "123") ){
                 val message = uIme.text.toString()
                 val intent = Intent(this, Uporabnik::class.java).apply { // pošljemo ime v drug activity
                     putExtra(EXTRA_MESSAGE, message)

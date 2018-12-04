@@ -6,6 +6,7 @@ import android.content.Intent
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_zemljevid.*
 import kotlin.system.exitProcess
 
 class Uporabnik : AppCompatActivity() {
@@ -32,7 +33,7 @@ class Uporabnik : AppCompatActivity() {
         val gumbIzhod = findViewById<Button>(R.id.izhod)
 
         gumbStart.setOnClickListener(){
-            val intent = Intent(this, IgraZemljevid::class.java).apply {
+            val intent = Intent(this, Zemljevid::class.java).apply {
                 putExtra(EXTRA_MESSAGE, message)
             }
             startActivity(intent)

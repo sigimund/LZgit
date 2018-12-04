@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LovZnamenitosti</string>
     <string name="Vpis">Vpiši se</string>
+    <string name="activity_zemljevid">Map</string>
 </resources>
