@@ -5,71 +5,74 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
         tools:context=".Uporabnik">
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp">
-
-            <TextView
-                    android:text="Uporabnik"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/UporabniskoIme"
-                    android:autoText="false"
-                    android:layout_marginTop="20dp"
-                    android:textSize="25dp"/>
-        </RelativeLayout>
         <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:divider="@drawable/empty_tall_divider"
+                android:paddingLeft="50dp">
             <Button
                     android:text="Novi lov"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/novLov"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/novLov"
+
                     android:layout_marginTop="20dp"
                     android:drawableLeft="@drawable/adventure_map"
-                    android:background="@drawable/gumbi"
+                    android:backgroundTint="@color/NeznaRdeca"
+                    android:textColor="#ffffff"
+                    tools:fontFamily="@font/telex"
+                    android:layout_gravity="center"
             >
 
             </Button>
             <Button
                     android:text="Točke"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/tocke"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
+
                     android:layout_marginTop="20dp"
                     android:drawableLeft="@drawable/dosezki"
-                    android:background="@drawable/gumbi"
+                    android:backgroundTint="@color/NeznaRdeca"
+                    android:textColor="#ffffff"
+                    tools:fontFamily="@font/telex"
+                    android:layout_gravity="center"
             />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:showDividers="middle"
+                android:divider="@drawable/empty_tall_divider">
             <Button
                     android:text="Dosežki"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/dosezki"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dosezki"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/gumbi"
+                    android:backgroundTint="@color/NeznaRdeca"
+                    android:textColor="#ffffff"
+                    tools:fontFamily="@font/telex"
+                    android:layout_gravity="center"
             />
             <Button
                     android:text="Izhod"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/izhod"
-                    android:layout_marginLeft="90dp"
-                    android:layout_marginRight="90dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/izhod"
+
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/gumbi"
+                    android:backgroundTint="@color/NeznaRdeca"
+                    android:textColor="#ffffff"
+                    tools:fontFamily="@font/telex"
+                    android:layout_gravity="center"
             />
         </LinearLayout>
     </LinearLayout>

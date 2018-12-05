@@ -20,8 +20,8 @@ class Uporabnik : AppCompatActivity() {
         val duration = Toast.LENGTH_SHORT
 
         val msg = intent.getStringExtra(EXTRA_MESSAGE);
-        val name = findViewById<TextView>(R.id.UporabniskoIme);
-        name.setText(msg)
+        //val name = findViewById<TextView>(R.id.UporabniskoIme);
+        //name.setText(msg)
 
         val toast = Toast.makeText(context, message, duration)
         toast.show()
