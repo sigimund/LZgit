@@ -2,4 +2,8 @@
     <string name="app_name">LovZnamenitosti</string>
     <string name="Vpis">Vpiši se</string>
     <string name="activity_zemljevid">Map</string>
+    <string name="LoginImage">Slika na prijavni strani</string>
+    <string name="LoginTitle">Lov znamenitosti</string>
+    <string name="LoginName">Uporabniško ime</string>
+    <string name="LoginPassword">Geslo</string>
 </resources>

@@ -199,7 +199,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         // 1
         locationRequest = LocationRequest()
         // 2 interval nam pove pri kakšni hitrosti hočemo preverjati našo trenutno lokacijo
-        locationRequest.interval = 10000
+        locationRequest.interval = 9000
         // 3 najhitrješe možno posodabljanje naše lokacije
         locationRequest.fastestInterval = 5000
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
