@@ -13,41 +13,42 @@
             android:layout_height="match_parent">
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:showDividers="middle"
                 android:divider="@drawable/empty_tall_divider"
-                android:paddingLeft="50dp">
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
             <Button
                     android:text="Novi lov"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
                     android:id="@+id/novLov"
-
-                    android:layout_marginTop="20dp"
-                    android:drawableLeft="@drawable/adventure_map"
+                    android:drawableTop="@drawable/adventure_map"
                     android:backgroundTint="@color/NeznaRdeca"
                     android:textColor="#ffffff"
                     tools:fontFamily="@font/telex"
                     android:layout_gravity="center"
+                    android:drawablePadding="20dp"
             >
 
             </Button>
             <Button
                     android:text="Točke"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/tocke"
-
-                    android:layout_marginTop="20dp"
-                    android:drawableLeft="@drawable/dosezki"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tocke"
+                    android:drawableTop="@drawable/dosezki"
                     android:backgroundTint="@color/NeznaRdeca"
                     android:textColor="#ffffff"
                     tools:fontFamily="@font/telex"
                     android:layout_gravity="center"
+                    android:drawablePadding="20dp"
             />
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:showDividers="middle"
                 android:divider="@drawable/empty_tall_divider">
