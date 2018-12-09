@@ -1,53 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".registracija">
 
     <LinearLayout
-            android:id="@+id/VpisiLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_width="match_parent">
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/zemljevid"
-                android:id="@+id/imageView"
-                android:contentDescription="@string/LoginImage"
-        />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
-                android:text="@string/LoginTitle"
+                android:text="@string/TitleRegistration"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/LoginNaslov"
-                android:layout_gravity="center"
-                android:textSize="38sp"
-                android:textColor="@color/NeznaRdeca"
-
+                android:layout_height="wrap_content" android:id="@+id/textView"
+                android:textSize="38dp"
                 android:layout_marginBottom="55dp"
-                tools:fontFamily="@font/telex"
-        />
+                android:layout_marginTop="55dp"
+                android:layout_gravity="center"
+                android:textColor="@color/NeznaRdeca"
+                tools:fontFamily="@font/telex"/>
         <EditText
-                android:id="@+id/UporabniskoIme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text=""
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="12dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:singleLine="false"
                 android:textAlignment="gravity"
                 android:drawableLeft="@drawable/svincnik"
@@ -56,54 +38,46 @@
                 android:drawablePadding="20dp"
                 android:hint="@string/LoginName"
                 tools:fontFamily="@font/telex"
-                />
-
+                android:id="@+id/editText"/>
         <EditText
-                android:id="@+id/geslo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:textAlignment="gravity"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:textAlignment="gravity"
-
+                android:layout_marginBottom="12dp"
                 android:drawableLeft="@drawable/kljucavnica"
                 android:autofillHints=""
                 android:drawableStart="@drawable/kljucavnica"
                 android:drawablePadding="20dp"
                 android:hint="@string/LoginPassword"
-                tools:fontFamily="@font/telex"
-                />
-
-        <Button
-                android:id="@+id/GumbVpisi"
+                tools:fontFamily="@font/telex"/>
+        <EditText
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText3"
+                android:textAlignment="gravity"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/Vpis"
-                android:textAllCaps="false"
-
-                android:background="@drawable/gumbi_login_animacija"
-                android:foreground="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                tools:fontFamily="@font/telex"
-
-                />
-
-        <!--<Button
+                android:layout_marginBottom="25dp"
+                android:drawableLeft="@drawable/kljucavnica"
+                android:autofillHints=""
+                android:drawableStart="@drawable/kljucavnica"
+                android:drawablePadding="20dp"
+                android:hint="@string/AgainLoginPassword"
+                tools:fontFamily="@font/telex"/>
+        <Button
                 android:id="@+id/GumbRegistracija"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="50dp"
                 android:text="@string/LoginRegistration"
                 android:textAllCaps="false"
 
@@ -115,17 +89,7 @@
                 android:textSize="20sp"
                 tools:fontFamily="@font/telex"
 
-        />-->
-        <TextView
-                android:text="Nimate računa? Ustvarite ga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/LinkRegistracija"
-                android:textSize="20dp"
-                tools:fontFamily="@font/telex"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:clickable="true"
-                />
+        />
         <ProgressBar
                 android:id="@+id/indeterminateBar"
                 android:layout_width="wrap_content"
@@ -133,5 +97,4 @@
                 android:layout_gravity="center"
         />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

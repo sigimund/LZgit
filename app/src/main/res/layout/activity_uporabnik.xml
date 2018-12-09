@@ -12,69 +12,96 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:showDividers="middle"
-                android:divider="@drawable/empty_tall_divider"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp">
-            <Button
-                    android:text="Novi lov"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/novLov"
-                    android:drawableTop="@drawable/adventure_map"
-                    android:backgroundTint="@color/NeznaRdeca"
-                    android:textColor="#ffffff"
-                    tools:fontFamily="@font/telex"
-                    android:layout_gravity="center"
-                    android:drawablePadding="20dp"
-            >
-
-            </Button>
-            <Button
-                    android:text="Točke"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tocke"
-                    android:drawableTop="@drawable/dosezki"
-                    android:backgroundTint="@color/NeznaRdeca"
-                    android:textColor="#ffffff"
-                    tools:fontFamily="@font/telex"
-                    android:layout_gravity="center"
-                    android:drawablePadding="20dp"
-            />
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" app:srcCompat="@drawable/uporabnik_ikona"
+                        android:id="@+id/imageView3" android:layout_weight="0.3"
+                        android:contentDescription="Uporabniska slika"
+                        android:layout_gravity="center_vertical"
+                        />
+                <TextView
+                        android:text="Sample text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:id="@+id/Ime_Uporabnika"
+                        android:textSize="20dp"
+                        tools:fontFamily="@font/telex"
+                        android:layout_weight="1"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
+        <Button
+                android:text="Novi lov"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:showDividers="middle"
-                android:divider="@drawable/empty_tall_divider">
-            <Button
-                    android:text="Dosežki"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/dosezki"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/NeznaRdeca"
-                    android:textColor="#ffffff"
-                    tools:fontFamily="@font/telex"
-                    android:layout_gravity="center"
-            />
-            <Button
-                    android:text="Izhod"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/izhod"
+                android:id="@+id/novLov"
+                android:drawableLeft="@drawable/adventure_map"
+                android:backgroundTint="@color/NeznaRdeca"
+                android:textColor="#ffffff"
+                tools:fontFamily="@font/telex"
+                android:layout_gravity="center"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="20dp"
+        >
 
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/NeznaRdeca"
-                    android:textColor="#ffffff"
-                    tools:fontFamily="@font/telex"
-                    android:layout_gravity="center"
-            />
-        </LinearLayout>
+        </Button>
+        <Button
+                android:text="Točke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tocke"
+                android:drawableLeft="@drawable/dosezki"
+                android:backgroundTint="@color/NeznaRdeca"
+                android:textColor="#ffffff"
+                tools:fontFamily="@font/telex"
+                android:layout_gravity="center"
+                android:drawablePadding="20dp"
+                android:layout_marginTop="5dp"
+        />
+        <Button
+                android:text="Dosežki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dosezki"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/NeznaRdeca"
+                android:textColor="#ffffff"
+                tools:fontFamily="@font/telex"
+                android:layout_gravity="center"
+        />
+
+        <Button
+                android:text="Odjava"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Odjava"
+
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/NeznaRdeca"
+                android:textColor="#ffffff"
+                tools:fontFamily="@font/telex"
+                android:layout_gravity="center"
+        />
+
+        <Button
+                android:text="Izhod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/izhod"
+
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/NeznaRdeca"
+                android:textColor="#ffffff"
+                tools:fontFamily="@font/telex"
+                android:layout_gravity="center"
+        />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

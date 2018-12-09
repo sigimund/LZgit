@@ -6,4 +6,7 @@
     <string name="LoginTitle">Lov znamenitosti</string>
     <string name="LoginName">Uporabniško ime</string>
     <string name="LoginPassword">Geslo</string>
+    <string name="AgainLoginPassword">Ponovno vpišite geslo</string>
+    <string name="LoginRegistration">Registrirajte</string>
+    <string name="TitleRegistration">Registracija</string>
 </resources>

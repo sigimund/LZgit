@@ -1,5 +1,6 @@
 package org.um.ziga.lzprojekt
 
+import android.app.ActivityOptions
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,9 +31,17 @@ class MainActivity : AppCompatActivity() {
         val uGeslo = findViewById<EditText>(R.id.geslo);
         val gumb = findViewById<Button>(R.id.GumbVpisi);
 
+        val regText = findViewById<TextView>(R.id.LinkRegistracija)
         indeterminateBar.visibility = View.INVISIBLE
 
         //val typeface = Typeface.createFromAsset(applicationContext.assets, "f")
+
+
+        regText.setOnClickListener(){
+
+            val intent = Intent(this,registracija::class.java)
+            startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+        }
 
         gumb.setOnClickListener(){
 
@@ -50,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     uIme.setText("")
                     uGeslo.setText("")
-                    startActivity(intent)
+                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
                 }, 3000)
             }
             else{
@@ -64,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     val text = layout.findViewById<TextView>(R.id.text)
                     text.text = "Napačno uporabniško ime ali geslo"
                     with (Toast(applicationContext)) {
-                        setGravity(Gravity.BOTTOM, 0, 0)
+                        setGravity(Gravity.CENTER, 0, 0)
                         duration = Toast.LENGTH_LONG
                         view = layout
                         show()
