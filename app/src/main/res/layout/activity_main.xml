@@ -39,44 +39,65 @@
                 android:layout_marginBottom="55dp"
                 tools:fontFamily="@font/telex"
         />
-        <EditText
-                android:id="@+id/UporabniskoIme"
+
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="12dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:singleLine="false"
-                android:textAlignment="gravity"
-                android:drawableLeft="@drawable/svincnik"
-                android:autofillHints=""
-                android:drawableStart="@drawable/svincnik"
-                android:drawablePadding="20dp"
-                android:hint="@string/LoginName"
-                tools:fontFamily="@font/telex"
-                />
+                android:layout_height="wrap_content">
 
-        <EditText
-                android:id="@+id/geslo"
+            <EditText
+                    android:id="@+id/UporabniskoIme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:singleLine="false"
+                    android:textAlignment="gravity"
+                    android:drawableLeft="@drawable/svincnik"
+                    android:autofillHints=""
+                    android:drawableStart="@drawable/svincnik"
+                    android:drawablePadding="20dp"
+                    android:hint="@string/LoginName"
+                    tools:fontFamily="@font/telex"
+            />
+            <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/UporabniskoIme"
+                    android:id="@+id/ACUporabniskoIme"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:textAlignment="gravity"
+                android:layout_height="wrap_content">
 
-                android:drawableLeft="@drawable/kljucavnica"
-                android:autofillHints=""
-                android:drawableStart="@drawable/kljucavnica"
-                android:drawablePadding="20dp"
-                android:hint="@string/LoginPassword"
-                tools:fontFamily="@font/telex"
-                />
+            <EditText
+                    android:id="@+id/geslo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:textAlignment="gravity"
 
+                    android:drawableLeft="@drawable/kljucavnica"
+                    android:autofillHints=""
+                    android:drawableStart="@drawable/kljucavnica"
+                    android:drawablePadding="20dp"
+                    android:hint="@string/LoginPassword"
+                    tools:fontFamily="@font/telex"
+            />
+            <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/geslo"
+                    android:id="@+id/ACgeslo"/>
+        </RelativeLayout>
         <Button
                 android:id="@+id/GumbVpisi"
                 android:layout_width="match_parent"

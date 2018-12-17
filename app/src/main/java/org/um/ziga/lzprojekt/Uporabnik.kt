@@ -28,7 +28,7 @@ class Uporabnik : AppCompatActivity() {
 
 
         val gumbStart = findViewById<Button>(R.id.novLov)
-        val gumbTocke = findViewById<Button>(R.id.tocke)
+        //val gumbTocke = findViewById<Button>(R.id.tocke)
         val gumbDosezki = findViewById<Button>(R.id.dosezki)
         val gumbIzhod = findViewById<Button>(R.id.izhod)
 
@@ -39,9 +39,9 @@ class Uporabnik : AppCompatActivity() {
             startActivity(intent)
         }
 
-        gumbTocke.setOnClickListener(){
+        //gumbTocke.setOnClickListener(){
 
-        }
+        //}
 
         gumbDosezki.setOnClickListener(){
 

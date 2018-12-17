@@ -54,23 +54,11 @@
 
         </Button>
         <Button
-                android:text="Točke"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tocke"
-                android:drawableLeft="@drawable/dosezki"
-                android:backgroundTint="@color/NeznaRdeca"
-                android:textColor="#ffffff"
-                tools:fontFamily="@font/telex"
-                android:layout_gravity="center"
-                android:drawablePadding="20dp"
-                android:layout_marginTop="5dp"
-        />
-        <Button
                 android:text="Dosežki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/dosezki"
+                android:drawableLeft="@drawable/dosezki"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/NeznaRdeca"
                 android:textColor="#ffffff"
