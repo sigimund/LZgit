@@ -87,11 +87,38 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         map.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
 
         val slomskovTrg = LatLng(46.5596944,15.6428725)
+        val mariborGrad = LatLng(46.5595225,15.6429587)
+        val muzejOsvoboditve = LatLng(46.5595909,15.6438641)
+        val sodniStolp = LatLng(46.5595909,15.6438641)
+        val vodniStolp = LatLng(46.5566302,15.648396)
+        val kuznoZnamenje = LatLng(46.558123,15.6451389)
+
         //val titleStr = getAddress(slomskovTrg)  // dodamo naslov zraven markerja
-        map.addMarker((MarkerOptions().position(slomskovTrg).title("Slomškov trg")))
+        map.addMarker(MarkerOptions()
+            .position(slomskovTrg).title("Slomškov trg")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+        )
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(slomskovTrg, 12.0f))
 
-        map.getUiSettings().setZoomControlsEnabled(true)
+        map.addMarker(MarkerOptions()
+            .position(mariborGrad).title("Mariborski Castle")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+        )
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(mariborGrad, 12.0f))
+
+        map.addMarker(MarkerOptions()
+            .position(kuznoZnamenje).title("Kužno znamenje")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+        )
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
+
+        map.addMarker(MarkerOptions()
+            .position(vodniStolp).title("Vodni stolp")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+        )
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(vodniStolp, 12.0f))
+
+        map.getUiSettings().isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
 
         map.uiSettings.isZoomControlsEnabled = true
@@ -146,14 +173,16 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     private fun placeMarkerOnMap(location: LatLng) {
         // 1 naredimo objekt tipa markerOptions in pozicija markerja je trenutna pozicija uporabnika
         val markerOptions = MarkerOptions().position(location)
-        markerOptions.icon( // dodamo svojo ikono za marker
+        /*markerOptions.icon( // dodamo svojo ikono za marker
             BitmapDescriptorFactory.fromBitmap(
-            BitmapFactory.decodeResource(resources, R.drawable.user_icon)))
+            BitmapFactory.decodeResource(resources, R.drawable.user_icon)))*/
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
 
         val titleStr = getAddress(location)  // dodamo naslov zraven markerja
         markerOptions.title(titleStr)
 
         // 2 dodamo naš marker na zemljevid
+
         map.addMarker(markerOptions)
     }
 

@@ -33,63 +33,109 @@
                         android:text="Sample text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" android:id="@+id/Ime_Uporabnika"
-                        android:textSize="20dp"
+                        android:textSize="28dp"
                         tools:fontFamily="@font/telex"
                         android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
         <Button
                 android:text="Novi lov"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textAllCaps="false"
                 android:id="@+id/novLov"
-                android:drawableLeft="@drawable/adventure_map"
                 android:backgroundTint="@color/NeznaRdeca"
-                android:textColor="#ffffff"
-                tools:fontFamily="@font/telex"
                 android:layout_gravity="center"
-                android:drawablePadding="20dp"
                 android:layout_marginTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+
+                android:drawableLeft="@drawable/adventure_map"
+                android:drawableRight="@drawable/adventure_map"
+
+                android:background="@drawable/gumbi_login_animacija"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                tools:fontFamily="@font/telex"
         >
 
         </Button>
         <Button
                 android:text="Dosežki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textAllCaps="false"
                 android:id="@+id/dosezki"
-                android:drawableLeft="@drawable/dosezki"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/NeznaRdeca"
-                android:textColor="#ffffff"
-                tools:fontFamily="@font/telex"
                 android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+
+                android:drawableLeft="@drawable/dosezki"
+                android:drawableRight="@drawable/dosezki"
+
+                android:background="@drawable/gumbi_login_animacija"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                tools:fontFamily="@font/telex"
         />
 
         <Button
                 android:text="Odjava"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textAllCaps="false"
                 android:id="@+id/Odjava"
 
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/NeznaRdeca"
-                android:textColor="#ffffff"
-                tools:fontFamily="@font/telex"
                 android:layout_gravity="center"
+
+                android:background="@drawable/gumbi_login_animacija"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                tools:fontFamily="@font/telex"
         />
 
         <Button
                 android:text="Izhod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textAllCaps="false"
                 android:id="@+id/izhod"
-
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/NeznaRdeca"
-                android:textColor="#ffffff"
-                tools:fontFamily="@font/telex"
                 android:layout_gravity="center"
+
+                android:background="@drawable/gumbi_login_animacija"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                tools:fontFamily="@font/telex"
         />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

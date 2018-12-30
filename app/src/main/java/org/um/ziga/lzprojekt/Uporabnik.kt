@@ -44,7 +44,10 @@ class Uporabnik : AppCompatActivity() {
         //}
 
         gumbDosezki.setOnClickListener(){
-
+            val intent = Intent(this, dosezki::class.java).apply {
+                //putExtra(EXTRA_MESSAGE, message)
+            }
+            startActivity(intent)
         }
 
         gumbIzhod.setOnClickListener(){// izhod

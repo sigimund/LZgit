@@ -21,11 +21,12 @@ import kotlin.concurrent.schedule
 
 const val EXTRA_MESSAGE = "org.um.ziga.lzprojekt.MESSAGE"
 class MainActivity : AppCompatActivity() {
-val imeDatoteke = "Uporabniska_Imena.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         //val uporabniskiView = findViewById<LinearLayout>(R.id.VpisiLinearLayout);
         //uporabniskiView.visibility;
@@ -41,39 +42,14 @@ val imeDatoteke = "Uporabniska_Imena.txt"
 
         // za dopolnjevanje vnosa------------------------------------------------------------
 
-        val datoteka = File(imeDatoteke)
 
-        if(datoteka.exists()){
+        //sharedpreferenceBeri()
 
-            val dopolniUI = mutableListOf("")
-
-            File(applicationContext.filesDir, imeDatoteke).bufferedReader().use {
-                //it.readText()
-                dopolniUI += it.readLine().toString()
-            }
-
-            var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,dopolniUI)
-            ACUporabniskoIme.threshold = 0
-            ACUporabniskoIme.setAdapter(adapter)
+        if (sharedPref.getString("UporabniskoIme", "") != ""){
+            val uIme = findViewById<EditText>(R.id.UporabniskoIme);
+            uIme.setText(sharedPref.getString("UporabniskoIme", ""))
 
         }
-        else{
-            // create a new file
-            val isNewFileCreated :Boolean = datoteka.createNewFile()
-            if(isNewFileCreated){
-                val dopolniUI = mutableListOf("")
-
-                File(applicationContext.filesDir, imeDatoteke).bufferedReader().use {
-                    //it.readText()
-                    dopolniUI += it.readLine().toString()
-                }
-
-                var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,dopolniUI)
-                ACUporabniskoIme.threshold = 0
-                ACUporabniskoIme.setAdapter(adapter)
-            }
-        }
-
 
         //-----------------------------------------------------------------------------------
 
@@ -91,11 +67,11 @@ val imeDatoteke = "Uporabniska_Imena.txt"
 
             if( (uIme.text.toString() == "ziga") && (uGeslo.text.toString() == "123") ){
 
-                /*applicationContext.openFileOutput(imeDatoteke, Context.MODE_PRIVATE).use {
-                    it.write(uIme.text.toString().toByteArray())
-                    it.write("\n".toByteArray())
-                }*/
+                //sharedPreferencePisi(uIme.text.toString())
 
+                val editor = sharedPref.edit()
+                editor.putString("UporabniskoIme",uIme.text.toString())
+                editor.apply()
 
                 Handler().postDelayed({
                     indeterminateBar.visibility = View.INVISIBLE
@@ -132,5 +108,20 @@ val imeDatoteke = "Uporabniska_Imena.txt"
 
     }
 
+    fun sharedpreferenceBeri(){
+        //val sharedPref = MainActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
+        //val defaultValue = resources.getString("UporabniskoIme")
+        //val highScore = sharedPref.getString("UporabniskoIme", null)
+
+    }
+
+    fun sharedPreferencePisi(ime:String){
+        //val sharedPref = MainActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
+        //with (sharedPref.edit()) {
+        //putString("UporabniskoIme",ime)
+        //commit()
+        //}
+
+    }
 
 }
