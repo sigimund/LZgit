@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Handler
+import android.support.v4.app.FragmentActivity
 import android.text.Layout
 import android.view.Gravity
 import android.view.View
@@ -15,12 +16,19 @@ import android.view.ViewGroup
 import android.widget.*
 import org.w3c.dom.Text
 import java.io.File
+import java.net.Inet4Address
+import java.net.InetAddress
+import java.net.Socket
 import java.util.*
 import kotlin.concurrent.schedule
 
 
 const val EXTRA_MESSAGE = "org.um.ziga.lzprojekt.MESSAGE"
 class MainActivity : AppCompatActivity() {
+
+    private var serverIP: String = "192.168.1.101"
+    private var serverPort: Int = 8080
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,6 +129,15 @@ class MainActivity : AppCompatActivity() {
         //putString("UporabniskoIme",ime)
         //commit()
         //}
+
+    }
+
+    fun run(): Unit{
+        var serverAddr = InetAddress.getByName(serverIP)
+        var socket = Socket(serverAddr,serverPort)
+    }
+
+    fun posljiSporocilo(msg: String){
 
     }
 

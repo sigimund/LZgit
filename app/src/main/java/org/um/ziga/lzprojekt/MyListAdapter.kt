@@ -19,11 +19,14 @@ class MyListAdapter(var hehe: Context, var resource: Int, var items: List<predme
 
         val imageView : ImageView = view.findViewById(R.id.imageView2)
         val textView : TextView = view.findViewById(R.id.textView2)
+        val textView3 : TextView = view.findViewById(R.id.textView3)
 
         val predmet : predmetiDosezkov = items[position]
 
         imageView.setImageDrawable(hehe.resources.getDrawable(predmet.image))
         textView.text = predmet.name
+        textView3.text = predmet.opis
+
 
         return view
     }

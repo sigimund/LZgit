@@ -4,13 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
+import android.support.v7.appcompat.R.id.image
 import android.util.Log
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -24,6 +27,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_zemljevid.*
 import java.io.IOException
 
 
@@ -48,6 +52,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         private const val REQUEST_CHECK_SETTINGS = 2
     }
 
+    val REQUEST_IMAGE_CAPTURE = 1 // za kamero
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +72,11 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             }
         }
         createLocationRequest()
+
+        slikaj.setOnClickListener(){
+            var i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(i,123)
+        }
     }
 
     /**
@@ -271,6 +281,24 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
                 startLocationUpdates()
             }
         }
+
+        /*if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                CAMERA_REQUEST_CODE -> {
+
+                    val extras = data?.getExtras()
+                    val imageBitmap = extras?.get("data") as Bitmap
+                    image.setImageBitmap(imageBitmap)
+
+                }
+            }
+        }*/
+
+        if(requestCode == 123){
+            var bmp = data.extras.get("data") as Bitmap
+
+        }
+
     }
 
     // 2 da ustavimo posodabljanje lokacije
@@ -286,5 +314,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             startLocationUpdates()
         }
     }
+
+
 
 }

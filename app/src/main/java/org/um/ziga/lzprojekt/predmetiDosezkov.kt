@@ -1,3 +1,3 @@
 package org.um.ziga.lzprojekt
 
-class predmetiDosezkov(val image: Int, val name: String)
+class predmetiDosezkov(val image: Int, val name: String, val opis: String)
