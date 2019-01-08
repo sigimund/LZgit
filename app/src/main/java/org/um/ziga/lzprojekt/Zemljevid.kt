@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_zemljevid.*
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 
@@ -53,6 +54,10 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     }
 
     val REQUEST_IMAGE_CAPTURE = 1 // za kamero
+
+    private var serverPort = 8080
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -275,29 +280,28 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     // 1
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CHECK_SETTINGS) {
-            if (resultCode == Activity.RESULT_OK) {
-                locationUpdateState = true
-                startLocationUpdates()
-            }
-        }
 
-        /*if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                CAMERA_REQUEST_CODE -> {
-
-                    val extras = data?.getExtras()
-                    val imageBitmap = extras?.get("data") as Bitmap
-                    image.setImageBitmap(imageBitmap)
-
+        try{
+            if (requestCode == REQUEST_CHECK_SETTINGS) {
+                if (resultCode == Activity.RESULT_OK) {
+                    locationUpdateState = true
+                    startLocationUpdates()
                 }
             }
-        }*/
 
-        if(requestCode == 123){
-            var bmp = data.extras.get("data") as Bitmap
+            if(requestCode == 123){
+                var bmp = data.extras.get("data") as Bitmap
+
+                var skaliranBMP = bmp.reconfigure(128,64,bmp.config)
+
+                val vrjenStream = kompresijaSlike(bmp,100) // kličemo funkcijo za kompresijo, kot parametra podamo sliko samo ki
+                // smo jo zajeli s kamero in kvaliteto kompresije, v tem primeru 100%
+            }
+        }
+        catch (sendEx: IntentSender.SendIntentException){
 
         }
+
 
     }
 
@@ -314,6 +318,53 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             startLocationUpdates()
         }
     }
+
+    // Za kompresijo slik
+    private fun kompresijaSlike(bitmap:Bitmap, quality:Int):Bitmap{
+        // Initialize a new ByteArrayStream
+        val stream = ByteArrayOutputStream()
+
+        /*
+            **** reference source developer.android.com ***
+
+            public boolean compress (Bitmap.CompressFormat format, int quality, OutputStream stream)
+                Write a compressed version of the bitmap to the specified outputstream.
+                If this returns true, the bitmap can be reconstructed by passing a
+                corresponding inputstream to BitmapFactory.decodeStream().
+
+                Note: not all Formats support all bitmap configs directly, so it is possible
+                that the returned bitmap from BitmapFactory could be in a different bitdepth,
+                and/or may have lost per-pixel alpha (e.g. JPEG only supports opaque pixels).
+
+                Parameters
+                format : The format of the compressed image
+                quality : Hint to the compressor, 0-100. 0 meaning compress for small size,
+                    100 meaning compress for max quality. Some formats,
+                    like PNG which is lossless, will ignore the quality setting
+                stream: The outputstream to write the compressed data.
+
+                Returns
+                    true if successfully compressed to the specified stream.
+
+
+            Bitmap.CompressFormat
+                Specifies the known formats a bitmap can be compressed into.
+
+                    Bitmap.CompressFormat  JPEG
+                    Bitmap.CompressFormat  PNG
+                    Bitmap.CompressFormat  WEBP
+        */
+
+        // Compress the bitmap with JPEG format and quality 50%
+        //bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream)
+        bitmap.compress(Bitmap.CompressFormat.PNG, quality, stream)
+
+        val byteArray = stream.toByteArray()
+
+        // Vrnemo kompresiran Bitmap
+        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+    }
+
 
 
 

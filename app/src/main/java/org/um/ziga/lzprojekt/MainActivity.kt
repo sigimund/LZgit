@@ -116,29 +116,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun sharedpreferenceBeri(){
-        //val sharedPref = MainActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
-        //val defaultValue = resources.getString("UporabniskoIme")
-        //val highScore = sharedPref.getString("UporabniskoIme", null)
-
-    }
-
-    fun sharedPreferencePisi(ime:String){
-        //val sharedPref = MainActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
-        //with (sharedPref.edit()) {
-        //putString("UporabniskoIme",ime)
-        //commit()
-        //}
-
-    }
-
-    fun run(): Unit{
-        var serverAddr = InetAddress.getByName(serverIP)
-        var socket = Socket(serverAddr,serverPort)
-    }
-
-    fun posljiSporocilo(msg: String){
-
-    }
-
 }
