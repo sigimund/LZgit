@@ -15,6 +15,7 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v7.appcompat.R.id.image
 import android.util.Log
+import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 
@@ -53,11 +54,9 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         private const val REQUEST_CHECK_SETTINGS = 2
     }
 
-    val REQUEST_IMAGE_CAPTURE = 1 // za kamero
-
     private var serverPort = 8080
 
-
+    val REQUEST_IMAGE_CAPTURE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,8 +78,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         createLocationRequest()
 
         slikaj.setOnClickListener(){
-            var i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(i,123)
+            dispatchTakePictureIntent()
         }
     }
 
@@ -289,14 +287,18 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
                 }
             }
 
-            if(requestCode == 123){
+            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                val imageBitmap = data.extras.get("data") as Bitmap
+                //mImageView.setImageBitmap(imageBitmap)
+            }
+            /*if(requestCode == 123){
                 var bmp = data.extras.get("data") as Bitmap
 
                 var skaliranBMP = bmp.reconfigure(128,64,bmp.config)
 
                 val vrjenStream = kompresijaSlike(bmp,100) // kličemo funkcijo za kompresijo, kot parametra podamo sliko samo ki
                 // smo jo zajeli s kamero in kvaliteto kompresije, v tem primeru 100%
-            }
+            }*/
         }
         catch (sendEx: IntentSender.SendIntentException){
 
@@ -316,6 +318,14 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         super.onResume()
         if (!locationUpdateState) {
             startLocationUpdates()
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
         }
     }
 
