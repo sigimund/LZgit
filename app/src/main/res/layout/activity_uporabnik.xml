@@ -18,7 +18,20 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp">
-            <LinearLayout
+            <TextView
+                    android:text="@string/LoginTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LoginNaslov"
+                    android:layout_gravity="center"
+                    android:textSize="42sp"
+                    android:textColor="@color/NeznaRdeca"
+
+
+                    tools:fontFamily="@font/telex"
+            />
+
+            <!--<LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -36,14 +49,14 @@
                         android:textSize="28dp"
                         tools:fontFamily="@font/telex"
                         android:layout_weight="1"/>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
         <Button
                 android:text="Novi lov"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:layout_marginBottom="20dp"
                 android:textAllCaps="false"
                 android:id="@+id/novLov"
@@ -70,8 +83,8 @@
                 android:text="Dosežki"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:layout_marginBottom="20dp"
                 android:textAllCaps="false"
                 android:id="@+id/dosezki"
@@ -92,50 +105,131 @@
                 android:textSize="20sp"
                 tools:fontFamily="@font/telex"
         />
-
-        <Button
-                android:text="Odjava"
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:textAllCaps="false"
-                android:id="@+id/Odjava"
+                android:layout_height="140dp">
+            <ImageView
+                    android:layout_width="214dp"
+                    android:layout_height="0dp" app:srcCompat="@drawable/geography"
+                    android:id="@+id/imageView3" android:layout_weight="1"
+                    android:layout_marginStart="93dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:orientation="horizontal">
 
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/NeznaRdeca"
-                android:layout_gravity="center"
+            <LinearLayout
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="0dp">
+                <Button
+                        android:text="Profil"
+                        android:layout_width="95dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAllCaps="false"
+                        android:id="@+id/Profil"
 
-                android:background="@drawable/gumbi_login_animacija"
-                android:foreground="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                tools:fontFamily="@font/telex"
-        />
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/NeznaRdeca"
+                        android:layout_gravity="center"
 
-        <Button
-                android:text="Izhod"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:textAllCaps="false"
-                android:id="@+id/izhod"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/NeznaRdeca"
-                android:layout_gravity="center"
+                        android:background="@drawable/gumbi_login_animacija"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        tools:fontFamily="@font/telex"
+                />
 
-                android:background="@drawable/gumbi_login_animacija"
-                android:foreground="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                tools:fontFamily="@font/telex"
-        />
+                <Button
+                        android:layout_width="95dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAllCaps="false"
+                        android:id="@+id/Nastavitve"
+
+                        android:drawableLeft="@drawable/settings"
+                        android:paddingLeft="32dp"
+
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/NeznaRdeca"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/gumbi_login_animacija"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        tools:fontFamily="@font/telex"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="130dp"
+                    >
+                <Button
+                        android:text="Odjava"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAllCaps="false"
+                        android:id="@+id/Odjava"
+
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/NeznaRdeca"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/gumbi_login_animacija"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        tools:fontFamily="@font/telex"
+                />
+
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAllCaps="false"
+                        android:id="@+id/izhod"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/NeznaRdeca"
+                        android:layout_gravity="center"
+
+                        android:drawableLeft="@drawable/exit"
+                        android:paddingLeft="30dp"
+
+                        android:background="@drawable/gumbi_login_animacija"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        tools:fontFamily="@font/telex"
+                />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
