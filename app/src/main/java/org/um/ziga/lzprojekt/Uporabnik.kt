@@ -31,6 +31,7 @@ class Uporabnik : AppCompatActivity() {
         //val gumbTocke = findViewById<Button>(R.id.tocke)
         val gumbDosezki = findViewById<Button>(R.id.dosezki)
         val gumbIzhod = findViewById<Button>(R.id.izhod)
+        val gumbOdjava = findViewById<Button>(R.id.Odjava)
 
         gumbStart.setOnClickListener(){
             val intent = Intent(this, Zemljevid::class.java).apply {
@@ -50,11 +51,21 @@ class Uporabnik : AppCompatActivity() {
             startActivity(intent)
         }
 
+        gumbOdjava.setOnClickListener(){
+            val intent = Intent(this,MainActivity::class.java).apply {}
+            startActivity(intent)
+        }
+
         gumbIzhod.setOnClickListener(){// izhod
             moveTaskToBack(true);
             exitProcess(-1)
             //finishAffinity() // potrebuje minimalni API level 16
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 }

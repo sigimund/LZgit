@@ -29,8 +29,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_zemljevid.*
+import kotlinx.android.synthetic.main.custom_toast.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.net.Socket
+import java.util.*
+import java.util.zip.GZIPInputStream
+import java.util.zip.GZIPOutputStream
+import kotlin.collections.ArrayList
 
 
 class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
@@ -48,19 +54,43 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var locationRequest: LocationRequest
     private var locationUpdateState = false
 
+    var trenutnaLokacija: LatLng = LatLng(0.0,0.0)
+
+    lateinit var dodajMarker: Marker
+
+    var stevec = 0
+
+    var rezultatSU = 0
+
+    var prag = 65
+
+    val slomskovTrg = LatLng(46.5590834,15.6442211)
+    val mariborGrad = LatLng(46.5607299,15.6486848)
+    val muzejOsvoboditve = LatLng(46.5627246,15.647904)
+    val sodniStolp = LatLng(46.5568654,15.6410986)
+    val vodniStolp = LatLng(46.5564089,15.6483579)
+    val kuznoZnamenje = LatLng(46.5576136,15.6451555)
+
+    var polje: ArrayList<LatLng> = arrayListOf(slomskovTrg,mariborGrad,muzejOsvoboditve,sodniStolp,vodniStolp,kuznoZnamenje)
+
     companion object { // za permission
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
         // 3
         private const val REQUEST_CHECK_SETTINGS = 2
     }
 
-    private var serverPort = 8080
-
     val REQUEST_IMAGE_CAPTURE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_zemljevid)
+
+        //val socket = Socket("192.168.1.101",8080)
+        //socket.use {
+        //    rezultatSU = it.getInputStream().toString().toInt()
+
+        //}
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -94,45 +124,59 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // Add a marker in Sydney and move the camera
-        /*val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
+        fun IntRange.random() =
+            Random().nextInt((endInclusive + 1) - start) +  start
 
-        val slomskovTrg = LatLng(46.5596944,15.6428725)
-        val mariborGrad = LatLng(46.5595225,15.6429587)
-        val muzejOsvoboditve = LatLng(46.5595909,15.6438641)
-        val sodniStolp = LatLng(46.5595909,15.6438641)
-        val vodniStolp = LatLng(46.5566302,15.648396)
-        val kuznoZnamenje = LatLng(46.558123,15.6451389)
+        val ran = (0..5).random()
 
-        //val titleStr = getAddress(slomskovTrg)  // dodamo naslov zraven markerja
-        map.addMarker(MarkerOptions()
-            .position(slomskovTrg).title("Slomškov trg")
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
-        )
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(slomskovTrg, 12.0f))
+        stevec = ran
 
-        map.addMarker(MarkerOptions()
-            .position(mariborGrad).title("Mariborski Castle")
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
-        )
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(mariborGrad, 12.0f))
 
-        map.addMarker(MarkerOptions()
-            .position(kuznoZnamenje).title("Kužno znamenje")
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
-        )
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
+        val lat:Double = trenutnaLokacija.latitude
+        val lng:Double = trenutnaLokacija.longitude
 
-        map.addMarker(MarkerOptions()
-            .position(vodniStolp).title("Vodni stolp")
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
-        )
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(vodniStolp, 12.0f))
-
-        map.getUiSettings().isZoomControlsEnabled = true
-        map.setOnMarkerClickListener(this)
+        if(ran == 0){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(slomskovTrg).title("Znana zgodovinska oseba")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(slomskovTrg, 12.0f))
+        }
+        else if(ran == 1){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(mariborGrad).title("Stavba starega časa")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(mariborGrad, 12.0f))
+        }
+        else if(ran == 2){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(muzejOsvoboditve).title("Svoboda je veliko vredna")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(muzejOsvoboditve, 12.0f))
+        }
+        else if(ran == 3){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(sodniStolp).title("Sodba je bila kruta")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(sodniStolp, 12.0f))
+        }
+        else if(ran == 4){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(vodniStolp).title("Stolp ob reki")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(vodniStolp, 12.0f))
+        }
+        else if(ran == 5){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(kuznoZnamenje).title("Čudni kip...")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
+        }
 
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
@@ -176,6 +220,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
+                trenutnaLokacija = currentLatLng
                 placeMarkerOnMap(currentLatLng) // kličemo metodo s katermo dodamo naš marker na zemljevid
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
             }
@@ -184,19 +229,83 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     }
 
     private fun placeMarkerOnMap(location: LatLng) {
+        if(dodajMarker != null){
+            //dodajMarker.remove()
+        }
         // 1 naredimo objekt tipa markerOptions in pozicija markerja je trenutna pozicija uporabnika
         val markerOptions = MarkerOptions().position(location)
         /*markerOptions.icon( // dodamo svojo ikono za marker
             BitmapDescriptorFactory.fromBitmap(
             BitmapFactory.decodeResource(resources, R.drawable.user_icon)))*/
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+        //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
 
         val titleStr = getAddress(location)  // dodamo naslov zraven markerja
         markerOptions.title(titleStr)
 
         // 2 dodamo naš marker na zemljevid
+        //dodajMarker = map.addMarker(markerOptions)
+        //map.addMarker(markerOptions)
+    }
 
-        map.addMarker(markerOptions)
+    private fun uspesenZadetek(){
+        val toast = Toast.makeText(applicationContext, "Pravilno", Toast.LENGTH_SHORT)
+        toast.show()
+
+        dodajMarker.remove()
+        polje.removeAt(stevec)
+
+        fun IntRange.random() =
+            Random().nextInt((endInclusive + 1) - start) +  start
+
+        var ran = (0..polje.size).random()
+
+        if(ran == 0 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(slomskovTrg).title("Znana zgodovinska oseba")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(slomskovTrg, 12.0f))
+        }
+        else if(ran == 1 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(mariborGrad).title("Stavba starega časa")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(mariborGrad, 12.0f))
+        }
+        else if(ran == 2 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(muzejOsvoboditve).title("Svoboda je veliko vredna")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(muzejOsvoboditve, 12.0f))
+        }
+        else if(ran == 3 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(sodniStolp).title("Sodba je bila kruta")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(sodniStolp, 12.0f))
+        }
+        else if(ran == 4 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(vodniStolp).title("Stolp ob reki")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(vodniStolp, 12.0f))
+        }
+        else if(ran == 5 && prag > rezultatSU){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(kuznoZnamenje).title("Čudni kip...")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
+        }
+
+        map.uiSettings.isZoomControlsEnabled = true
+        map.setOnMarkerClickListener(this)
+
+        setUpMap()
     }
 
     private fun getAddress(latLng: LatLng): String {
@@ -222,7 +331,6 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
 
         return addressText
     }
-
 
     private fun startLocationUpdates() {
         //1
@@ -290,21 +398,47 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                 val imageBitmap = data.extras.get("data") as Bitmap
                 //mImageView.setImageBitmap(imageBitmap)
+
+                val scaledImage = Bitmap.createScaledBitmap(imageBitmap,64,128,true) // skaliramo sliko
+                //val stisjenaSlika = kompresijaSlike(scaledImage,90)
+                var stream:ByteArrayOutputStream? = ByteArrayOutputStream()
+                try{
+                    var gzipOstream:GZIPOutputStream? = null
+                    try{
+                        gzipOstream = GZIPOutputStream(stream)
+                        scaledImage.compress(Bitmap.CompressFormat.JPEG,100,gzipOstream)
+                        gzipOstream.flush()
+                    }
+                    finally {
+                        gzipOstream?.close()
+                        stream?.flush()
+                    }
+                }
+                catch(sendEx: IntentSender.SendIntentException){
+                    stream = null
+                }
+                if(stream != null) run {
+                    var byteArray: ByteArray = stream.toByteArray()
+
+                }
+                /*val socket = Socket("192.168.1.101",8080)
+                socket.use {
+                    it.outputStream.write("Uspešno sem slikal sliko".toByteArray())
+                    var msg = it.getInputStream().read().toString()
+                    if(msg == "ne"){
+                        val toast = Toast.makeText(applicationContext, "Ni pravilni objekt", Toast.LENGTH_SHORT)
+                        toast.show()
+                    }
+                    else if(msg == "da"){
+                        uspesenZadetek()
+                    }
+                }*/
+                KlientPridobi().execute()
+                //MessageSender().execute()
             }
-            /*if(requestCode == 123){
-                var bmp = data.extras.get("data") as Bitmap
-
-                var skaliranBMP = bmp.reconfigure(128,64,bmp.config)
-
-                val vrjenStream = kompresijaSlike(bmp,100) // kličemo funkcijo za kompresijo, kot parametra podamo sliko samo ki
-                // smo jo zajeli s kamero in kvaliteto kompresije, v tem primeru 100%
-            }*/
         }
         catch (sendEx: IntentSender.SendIntentException){
-
         }
-
-
     }
 
     // 2 da ustavimo posodabljanje lokacije
@@ -327,6 +461,22 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
             }
         }
+    }
+
+    private fun scaleImage(bitmap:Bitmap, maxsize:Int): Bitmap? {
+        var width: Int = bitmap.width
+        var height: Int = bitmap.height
+
+        var bitmapRatio: Float = width as Float /height as Float
+        if(bitmapRatio > 1){
+            width = maxsize
+            height = (width / bitmapRatio) as Int
+        }
+        else{
+            height = maxsize
+            width = (height * bitmapRatio) as Int
+        }
+        return Bitmap.createScaledBitmap(bitmap,width,height,true)
     }
 
     // Za kompresijo slik
@@ -374,7 +524,6 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
         // Vrnemo kompresiran Bitmap
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
     }
-
 
 
 

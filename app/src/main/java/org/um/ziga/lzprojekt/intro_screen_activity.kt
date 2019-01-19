@@ -38,6 +38,7 @@ class intro_screen_activity : AppCompatActivity() {
 
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java).apply {}
+            //finish()
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
         }, 3000)
 

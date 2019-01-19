@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     uIme.setText("")
                     uGeslo.setText("")
+                    //finish()
                     startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
                 }, 3000)
             }
@@ -114,6 +115,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 
 }
