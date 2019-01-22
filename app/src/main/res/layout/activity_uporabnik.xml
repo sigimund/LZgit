@@ -113,7 +113,7 @@
                     android:layout_width="214dp"
                     android:layout_height="0dp" app:srcCompat="@drawable/geography"
                     android:id="@+id/imageView3" android:layout_weight="1"
-                    android:layout_marginStart="93dp"/>
+                    android:layout_marginStart="83dp"/>
         </LinearLayout>
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -182,7 +182,7 @@
                     >
                 <Button
                         android:text="Odjava"
-                        android:layout_width="match_parent"
+                        android:layout_width="95dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
@@ -204,7 +204,7 @@
                 />
 
                 <Button
-                        android:layout_width="match_parent"
+                        android:layout_width="95dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"

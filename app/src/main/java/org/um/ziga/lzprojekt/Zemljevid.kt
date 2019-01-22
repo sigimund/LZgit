@@ -11,10 +11,14 @@ import android.location.Geocoder
 import android.location.Location
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v7.appcompat.R.id.image
 import android.util.Log
+import android.view.Gravity
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -80,6 +84,8 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     }
 
     val REQUEST_IMAGE_CAPTURE = 1
+
+    private var koncniStevec = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -248,8 +254,8 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
     }
 
     private fun uspesenZadetek(){
-        val toast = Toast.makeText(applicationContext, "Pravilno", Toast.LENGTH_SHORT)
-        toast.show()
+        //val toast = Toast.makeText(applicationContext, "Pravilno", Toast.LENGTH_SHORT)
+        //toast.show()
 
         dodajMarker.remove()
         polje.removeAt(stevec)
@@ -259,7 +265,7 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
 
         var ran = (0..polje.size).random()
 
-        if(ran == 0 && prag > rezultatSU){
+        /*if(ran == 0 && prag > rezultatSU){
             dodajMarker = map.addMarker(MarkerOptions()
                 .position(slomskovTrg).title("Znana zgodovinska oseba")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
@@ -301,7 +307,49 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
             )
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
         }
-
+        */
+        if(ran == 0){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(slomskovTrg).title("Znana zgodovinska oseba")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(slomskovTrg, 12.0f))
+        }
+        else if(ran == 1){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(mariborGrad).title("Stavba starega časa")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(mariborGrad, 12.0f))
+        }
+        else if(ran == 2){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(muzejOsvoboditve).title("Svoboda je veliko vredna")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(muzejOsvoboditve, 12.0f))
+        }
+        else if(ran == 3){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(sodniStolp).title("Sodba je bila kruta")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(sodniStolp, 12.0f))
+        }
+        else if(ran == 4){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(vodniStolp).title("Stolp ob reki")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(vodniStolp, 12.0f))
+        }
+        else if(ran == 5){
+            dodajMarker = map.addMarker(MarkerOptions()
+                .position(kuznoZnamenje).title("Čudni kip...")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
+            )
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(kuznoZnamenje, 12.0f))
+        }
         map.uiSettings.isZoomControlsEnabled = true
         map.setOnMarkerClickListener(this)
 
@@ -421,7 +469,59 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
                     var byteArray: ByteArray = stream.toByteArray()
 
                 }
-                /*val socket = Socket("192.168.1.101",8080)
+
+                if(koncniStevec == 0){
+                    Handler().postDelayed({
+                    val inflater = layoutInflater
+                    val container = findViewById<ViewGroup>(R.id.custom_toast_container)
+                    val layout = inflater.inflate(R.layout.custom_toast, container) as ViewGroup
+                    val text = layout.findViewById<TextView>(R.id.text)
+                    text.text = "Napačni objekt, poskusite ponovno"
+                    with (Toast(applicationContext)) {
+                        setGravity(Gravity.CENTER, 0, 0)
+                        duration = Toast.LENGTH_LONG
+                        view = layout
+                        show()
+                    }
+                    koncniStevec = 1
+                    }, 1500)
+                }
+                else if(koncniStevec == 1){
+                    Handler().postDelayed({
+                    uspesenZadetek()
+                    val inflater = layoutInflater
+                    val container = findViewById<ViewGroup>(R.id.custom_toast_container)
+                    val layout = inflater.inflate(R.layout.custom_toast_pravilni, container) as ViewGroup
+                    val text = layout.findViewById<TextView>(R.id.text)
+                    text.text = "Zaklad ujet!"
+                    with (Toast(applicationContext)) {
+                        setGravity(Gravity.CENTER, 0, 0)
+                        duration = Toast.LENGTH_LONG
+                        view = layout
+                        show()
+                    }
+                    koncniStevec = 2
+                    }, 1500)
+                }
+                else if(koncniStevec == 2){
+                    //uspesenZadetek()
+                    Handler().postDelayed({
+                    val inflater = layoutInflater
+                    val container = findViewById<ViewGroup>(R.id.custom_toast_container)
+                    val layout = inflater.inflate(R.layout.custom_toast_zmaga, container) as ViewGroup
+                    val text = layout.findViewById<TextView>(R.id.text)
+                    text.text = "Zmaga, konec igre!"
+                    with (Toast(applicationContext)) {
+                        setGravity(Gravity.CENTER, 0, 0)
+                        duration = Toast.LENGTH_LONG
+                        view = layout
+                        show()
+                    }
+                    koncniStevec = 0
+                    }, 1000)
+                }
+
+                /*val socket = Socket("164.8.223.36",8080)
                 socket.use {
                     it.outputStream.write("Uspešno sem slikal sliko".toByteArray())
                     var msg = it.getInputStream().read().toString()
@@ -433,7 +533,8 @@ class Zemljevid : AppCompatActivity(), OnMapReadyCallback,
                         uspesenZadetek()
                     }
                 }*/
-                KlientPridobi().execute()
+                //KlientPridobi().execute()
+
                 //MessageSender().execute()
             }
         }
