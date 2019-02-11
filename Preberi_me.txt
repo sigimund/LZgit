@@ -1,0 +1,4 @@
+Za razvojno okolje sem uporabil Android studio
+
+Link na github : https://github.com/sigimund/LZgit
+Zadnja verzija : 34 commit
